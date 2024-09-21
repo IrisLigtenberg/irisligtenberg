@@ -1,0 +1,120 @@
+<style>
+    .alert {
+        padding: 10px;
+        margin-top: 10px;
+        display: none;
+    }
+    .alert-success {
+        background-color: #d4edda;
+        color: #155724;
+    }
+    .alert-danger {
+        background-color: #f8d7da;
+        color: #721c24;
+    }
+</style>
+
+<!-- Header Section -->
+<div id="header">
+    <ul id="header-items">
+        <li class="header-item"><a href="/">Home</a></li>
+        <li class="header-item" id="portfolio"><a href="#">Portfolio</a>
+            <ul id="dropdown">
+                <li class="header-item"><a href="portretten.html">Portretten</a></li>
+                <li class="header-item"><a href="natuur.html">Natuur</a></li>
+                <li class="header-item"><a href="steden.html">Steden</a></li>
+                <li class="header-item"><a href="urbex.html">Urbex</a></li>
+            </ul>
+        </li>
+        <li class="header-item"><a href="#">Contact</a></li>
+    </ul>
+</div>
+
+<!-- Contact Form -->
+<div class="container3">
+    <div class="container">
+        <div id="contactform">
+            <form id="contactForm" class="form-horizontal" role="form">
+                <div class="form-group">
+                    <label for="inputName" class="col-lg-2 control-label">Naam</label>
+                    <div class="col-lg-10">
+                        <input type="text" class="form-control" id="inputName" name="inputName"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail" class="col-lg-2 control-label">E-mail</label>
+                    <div class="col-lg-10">
+                        <input type="email" class="form-control" id="inputEmail" name="inputEmail"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputMessage" class="col-lg-2 control-label">Bericht</label>
+                    <div class="col-lg-10">
+                        <textarea class="form-control" rows="3" id="inputMessage" name="inputMessage"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-lg-offset-2 col-lg-10">
+                        <button type="submit" class="btn btn-default">Verstuur</button>
+                    </div>
+                </div>
+            </form>
+
+            <!-- Success or Error Message -->
+            <div id="alert-success" class="alert alert-success">Je berichtje is verzonden!</div>
+            <div id="alert-danger" class="alert alert-danger">Er ging iets mis, probeer het later nog eens.</div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Handle form submission
+    document.getElementById('contactForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        
+        const name = document.getElementById('inputName').value.trim();
+        const email = document.getElementById('inputEmail').value.trim();
+        const message = document.getElementById('inputMessage').value.trim();
+        const errors = [];
+
+        // Form validation
+        if (name.length < 2) {
+            errors.push("Vul uw naam in");
+        }
+        if (!validateEmail(email)) {
+            errors.push("Vul een geldig e-mailadres in");
+        }
+        if (message.length < 1) {
+            errors.push("Bericht mag niet leeg zijn");
+        }
+
+        // Display errors or send the form
+        if (errors.length > 0) {
+            showAlert('alert-danger', errors.join('<br>'));
+        } else {
+            // Simulating successful form submission
+            showAlert('alert-success', 'Je berichtje is verzonden!');
+        }
+    });
+
+    // Email validation function
+    function validateEmail(email) {
+        const re = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+        return re.test(email);
+    }
+
+    // Show success or error alert
+    function showAlert(alertId, message) {
+        const alertElement = document.getElementById(alertId);
+        alertElement.innerHTML = message;
+        alertElement.style.display = 'block';
+
+        // Automatically hide after 5 seconds
+        setTimeout(() => {
+            alertElement.style.display = 'none';
+        }, 5000);
+    }
+</script>
+
+</body>
+</html>
