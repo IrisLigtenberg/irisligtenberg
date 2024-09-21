@@ -1,0 +1,5 @@
+1. Header.php html daarvan in elk html bestand zetten bovenin
+2. Styles checken (bootstrap, eigen styles)
+3. Fotos erin zetten.
+4. Checken of alle JavaScript werkt. Contact ook
+5. Kijken of ik fotos sneller kan laten zien
