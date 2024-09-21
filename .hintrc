@@ -11,12 +11,15 @@
       }
     ],
     "meta-viewport": "off",
-    "axe/text-alternatives": [
+    "axe/text-alternatives": "off",
+    "no-inline-styles": "off",
+    "compat-api/css": [
       "default",
       {
-        "document-title": "off"
+        "ignore": [
+          "-webkit-mask-image"
+        ]
       }
-    ],
-    "no-inline-styles": "off"
+    ]
   }
 }

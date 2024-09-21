@@ -1,0 +1,191 @@
+html {
+    scroll-behavior: smooth;
+}
+
+.gallery {
+    column-count: 5;
+    column-width: 20%; 
+}
+
+.gallery .pics {
+    transition: all 350ms ease;
+}
+
+.gallery .animation {
+    transform: scale(1); 
+}
+
+@media (max-width: 450px) {
+    .gallery {
+        column-count: 1;
+        column-width: 100%;
+    }
+}
+
+@media (max-width: 400px) {
+    .btn.filter {
+        padding-left: 1.1rem;
+        padding-right: 1.1rem;
+    }
+}
+
+#container {
+    margin-top: 49.6px;
+}
+
+.container2 {
+    margin: 0px 15% 0px 15%;
+}
+
+.container3 {
+    margin: 10% 5% 5% 5%;
+}
+
+#info {
+    margin: 5% 5% 3% 5%;
+}
+
+.viewpic:hover img {
+    opacity: .8;
+    cursor: zoom-in;
+}
+
+.cattext {
+    text-decoration: none;
+    text-align: center;
+    color: white;
+    margin-top: -50px;
+    margin-bottom: 30px;
+}
+
+#logo {
+    position: absolute;
+    left: 10px;
+    top: 1px;
+    width: 110px;
+    height: 44px;
+    z-index: 4;
+}
+
+#header{
+    width: 100%;
+    height: 50px;
+    background-color: rgba(255,255,255, 0.6);
+    z-index: 5;
+    position: fixed;
+    top: 0;
+    margin: 0;
+    display: inline-block;
+}
+
+#header-items {
+    width: 100%;
+    text-align: center;
+    padding: 0;
+    margin: 0px;
+}
+
+.header-item {
+    text-align: center;
+    font-size: 20px;
+    display: inline-block;
+    padding: 10px;
+}
+
+.header-item > a {
+    color: black;
+}
+
+#contactform {
+    margin: 0 auto;
+    margin-bottom: 10%;
+    width: 60%;
+}
+
+.popup {
+    position: absolute;
+    text-align: center;
+    top: 55px;
+    left: 30%;
+    width: 40%;
+    height: 7%;
+    opacity: 0.8;
+    animation-name: popup;
+    animation-duration: 1s;
+    padding: 5px;
+}
+
+@keyframes popup {
+  from {top: -10%;}
+  to {top: 55px;}
+}
+
+.parallax {
+    background-image: url(../img/steden/DSC_0483.jpg);
+    min-height: 500px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.mdb-lightbox figure {
+    float: left;
+}
+
+#contact > h1 {
+    text-align: center;
+}
+
+#home {
+    margin-bottom: 50px;
+}
+
+#contactimg {
+    width: 90%;
+    height: 100%;
+}
+
+#dropdown {
+    display: none;
+    position: absolute;
+    background-color: rgba(255,255,255, 0.6);
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 12px 16px;
+    z-index: 1;
+    margin-top: 11px;
+    margin-left: -40px;
+}
+
+#dropdown > li {
+    display: block;
+    padding: 5px;
+}
+
+#portfolio:hover #dropdown {
+    display: block;
+}
+
+.picture:hover {
+    transform: scale(1.05);
+    transition-duration: .5s;
+}
+
+#errorpage > h5 { /*404*/
+    margin: 10% 0% 0% 0%;
+    text-align: center;
+    font-family: 'Merienda';
+    font-size: 122px;
+}
+
+#errorpage > p { /*pagina niet gevonden*/
+    text-align: center;
+    font-family: 'Merienda';
+    font-size: 30px;
+    margin-bottom: 50px;
+}
+
+#errorpage div {
+    text-align: center;
+}
