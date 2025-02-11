@@ -16,46 +16,23 @@
   <!-- Your custom styles (optional) -->
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" type="text/css" media="screen" href="http://cdnjs.cloudflare.com/ajax/libs/fancybox/1.3.4/jquery.fancybox-1.3.4.css" />
-    
 </head>
 <body>
-  <!-- jQuery -->
-  <script type="text/javascript" src="js/jquery.min.js"></script>
-  <!-- Bootstrap tooltips -->
-  <script type="text/javascript" src="js/popper.min.js"></script>
-  <!-- Bootstrap core JavaScript -->
-  <script type="text/javascript" src="js/bootstrap.min.js"></script>
-  <!-- MDB core JavaScript -->
-  <script type="text/javascript" src="js/mdb.min.js"></script>
-  <!-- Your custom scripts (optional) -->
-  <script type="text/javascript" src="js/main.js"></script>
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-155662106-1"></script>
-  <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/popper.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/mdb.min.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-155662106-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-      gtag('config', 'UA-155662106-1');
-  </script>
-    
-  <img id="logo" src="img/logo.png">
+    gtag('config', 'UA-155662106-1');
+</script>
 
-<style>
-    .alert {
-        padding: 10px;
-        margin-top: 10px;
-        display: none;
-    }
-    .alert-success {
-        background-color: #d4edda;
-        color: #155724;
-    }
-    .alert-danger {
-        background-color: #f8d7da;
-        color: #721c24;
-    }
-</style>
+<img id="logo" src="img/logo.png">
 
 <!-- Header Section -->
 <div id="header">
@@ -79,18 +56,6 @@
         <div id="contactform">
             <form id="contactForm" class="form-horizontal" role="form">
                 <div class="form-group">
-                    <label for="inputName" class="col-lg-2 control-label">Naam</label>
-                    <div class="col-lg-10">
-                        <input type="text" class="form-control" id="inputName" name="inputName"/>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="inputEmail" class="col-lg-2 control-label">E-mail</label>
-                    <div class="col-lg-10">
-                        <input type="email" class="form-control" id="inputEmail" name="inputEmail"/>
-                    </div>
-                </div>
-                <div class="form-group">
                     <label for="inputMessage" class="col-lg-2 control-label">Bericht</label>
                     <div class="col-lg-10">
                         <textarea class="form-control" rows="3" id="inputMessage" name="inputMessage"></textarea>
@@ -102,10 +67,6 @@
                     </div>
                 </div>
             </form>
-
-            <!-- Success or Error Message -->
-            <div id="alert-success" class="alert alert-success">Je berichtje is verzonden!</div>
-            <div id="alert-danger" class="alert alert-danger">Er ging iets mis, probeer het later nog eens.</div>
         </div>
     </div>
 </div>
@@ -115,48 +76,11 @@
     document.getElementById('contactForm').addEventListener('submit', function(event) {
         event.preventDefault();
         
-        const name = document.getElementById('inputName').value.trim();
-        const email = document.getElementById('inputEmail').value.trim();
         const message = document.getElementById('inputMessage').value.trim();
-        const errors = [];
-
-        // Form validation
-        if (name.length < 2) {
-            errors.push("Vul uw naam in");
-        }
-        if (!validateEmail(email)) {
-            errors.push("Vul een geldig e-mailadres in");
-        }
-        if (message.length < 1) {
-            errors.push("Bericht mag niet leeg zijn");
-        }
-
-        // Display errors or send the form
-        if (errors.length > 0) {
-            showAlert('alert-danger', errors.join('<br>'));
-        } else {
-            // Simulating successful form submission
-            showAlert('alert-success', 'Je berichtje is verzonden!');
-        }
+        const subject = encodeURIComponent('Bericht via irisligtenberg.nl');
+        const body = encodeURIComponent(message);
+        window.location.href = `mailto:webmaster@irisligtenberg.nl?subject=${subject}&body=${body}`;
     });
-
-    // Email validation function
-    function validateEmail(email) {
-        const re = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
-        return re.test(email);
-    }
-
-    // Show success or error alert
-    function showAlert(alertId, message) {
-        const alertElement = document.getElementById(alertId);
-        alertElement.innerHTML = message;
-        alertElement.style.display = 'block';
-
-        // Automatically hide after 5 seconds
-        setTimeout(() => {
-            alertElement.style.display = 'none';
-        }, 5000);
-    }
 </script>
 
 </body>
